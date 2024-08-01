@@ -1,3 +1,3 @@
 # Processador Mips no Logisim
 
-- Feito para multiplicar duas matrizes e guardá-las na memória utilizando uma linguagem de maquina própria.
+- Vamos tentar usar ele para desenhar em uma matriz de led do logisim
