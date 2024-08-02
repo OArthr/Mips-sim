@@ -15,3 +15,45 @@
 10-li	1010	00	0	0	0	0	0	1	01
 11-lw	1011	00	1	0	0	1	0	1	00
 12-sw	1100	00	1	0	0	0	1	0	00
+
+
+Layout da instrução em hexadecimal:
+
+	1   |	2   |	3   |	4   |	0	0	0	5  |
+	↑	↑	↑	↑   \______________________________/
+Nº da instrução	|	|	|		↑
+		|	|	|	Valor imediato
+	Registrador RS	|	|	(também usado no jump e branch)
+			|	|	
+		Registrador RT	|
+				|
+			Registrador RD
+
+**Se a instrução não usa registradores ou imediato, deixar sempre em 0**
+
+
+Exemplo de instrução em hexa:
+	•add $1, $2, $3 = 11230000
+	•addi $1, $1, 5 = 21100005
+	•beq $1, $2, 5  = a1200005
+	(vai pular 5 linhas abaixo da próxima linha)
+	Ex:	...
+		a1200005
+		|0↓
+		|1↓
+		|2↓
+		|3↓
+		|4↓
+		|5← essa linha será executada
+		...
+
+	•beq $1, $2, -5 = a120fffb
+	(pulos negativos devem usar complemento de 2 transformados em hexa com 4 algarismos)
+	Ex:	...
+		|5← essa linha será executada
+		|4↑
+		|3↑
+		|2↑
+		a120fffb|1↑
+		|0↑
+		...
