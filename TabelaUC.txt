@@ -1,21 +1,22 @@
-	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit
-0-stall	0000	00	0	0	0	0	0	0
+	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr
+0-stall	0000	00	0	0	0	0	0	0	0
 
-1-add	0001	00	0	0	0	0	0	1
-2-addi	0010	00	1	0	0	0	0	1
-3-sub	0011	01	0	0	0	0	0	1
-4-subi	0100	01	1	0	0	0	0	1
-5-mul	0101	10	0	0	0	0	0	1
-6-muli	0110	10	1	0	0	0	0	1
-7-div	0111	11	0	0	0	0	0	1
-8-divi	1000	11	1	0	0	0	0	1	
+1-add	0001	00	0	0	0	0	0	1	0
+2-addi	0010	00	1	0	0	0	0	1	0
+3-sub	0011	01	0	0	0	0	0	1	0
+4-subi	0100	01	1	0	0	0	0	1	0
+5-mul	0101	10	0	0	0	0	0	1	0
+6-muli	0110	10	1	0	0	0	0	1	0
+7-div	0111	11	0	0	0	0	0	1	0
+8-divi	1000	11	1	0	0	0	0	1	0
 
-9-j	1001	00	0	1	0	0	0	0
-10-beq	1010	00	0	0	1	0	0	0
+9-j	1001	00	0	1	0	0	0	0	0
+10-beq	1010	00	0	0	1	0	0	0	0
 
-11-lw	1011	00	1	0	0	1	0	1
-12-sw	1100	00	1	0	0	0	1	0
+11-lw	1011	00	1	0	0	1	0	1	0
+12-sw	1100	00	1	0	0	0	1	0	0
 
+13-tos	1101	00	0	0	0	0	0	0	1
 
 
 Layout da instrução em hexadecimal:
@@ -24,22 +25,22 @@ Layout da instrução em hexadecimal:
 	↑	↑	↑	↑   \______________________________/
 Nº da instrução	|	|	|		↑
 		|	|	|	Valor imediato
-	Registrador RS	|	|	(também usado no jump e branch)
+	Registrador RD	|	|	(também usado no jump e branch)
 			|	|	
-		Registrador RT	|
+		Registrador RS	|
 				|
-			Registrador RD
+			Registrador RT
 
 **Se a instrução não usa registradores ou imediato, deixar sempre em 0**
 
 
 Exemplo de instrução em hexa:
-	•add $1, $2, $3 = 11230000
+	•add $1, $2, $3 = 13120000
 	•addi $1, $1, 5 = 21100005
-	•beq $1, $2, 5  = a1200005
+	•beq $1, $2, 5  = a0120005
 	(vai pular 5 linhas abaixo da próxima linha)
 	Ex:	...
-		a1200005
+		a0120005
 		|0↓
 		|1↓
 		|2↓
@@ -48,7 +49,7 @@ Exemplo de instrução em hexa:
 		|5← essa linha será executada
 		...
 
-	•beq $1, $2, -5 = a120fffb
+	•beq $1, $2, -5 = a012fffb
 	(pulos negativos devem usar complemento de 2 transformados em hexa com 4 algarismos)
 	Ex:	...
 		|5← essa linha será executada
