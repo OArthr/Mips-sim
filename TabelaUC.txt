@@ -1,23 +1,23 @@
-	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr
-0-stall	0000	00	0	0	0	0	0	0	0
+	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr	Inp2Reg	
+0-stall	0000	XX	X	0	0	X	0	0	0	X
 
-1-add	0001	00	0	0	0	0	0	1	0
-2-addi	0010	00	1	0	0	0	0	1	0
-3-sub	0011	01	0	0	0	0	0	1	0
-4-subi	0100	01	1	0	0	0	0	1	0
-5-mul	0101	10	0	0	0	0	0	1	0
-6-muli	0110	10	1	0	0	0	0	1	0
-7-div	0111	11	0	0	0	0	0	1	0
-8-divi	1000	11	1	0	0	0	0	1	0
+1-add	0001	00	0	0	0	0	0	1	0	0
+2-addi	0010	00	1	0	0	0	0	1	0	0
+3-sub	0011	01	0	0	0	0	0	1	0	0
+4-subi	0100	01	1	0	0	0	0	1	0	0
+5-mul	0101	10	0	0	0	0	0	1	0	0
+6-muli	0110	10	1	0	0	0	0	1	0	0
+7-div	0111	11	0	0	0	0	0	1	0	0
+8-divi	1000	11	1	0	0	0	0	1	0	0
 
-9-j	1001	00	0	1	0	0	0	0	0
-10-beq	1010	00	0	0	1	0	0	0	0
+9-j	1001	XX	X	1	0	X	0	0	0	X
+10-beq	1010	XX	0	0	1	X	0	0	0	X
 
-11-lw	1011	00	1	0	0	1	0	1	0
-12-sw	1100	00	1	0	0	0	1	0	0
+11-lw	1011	00	1	0	0	1	0	1	0	0
+12-sw	1100	00	1	0	0	0	1	0	0	X
 
-13-tos	1101	00	0	0	0	0	0	0	1
-
+13-tos	1101	XX	X	0	0	X	0	0	1	X
+14-inpt	1110	XX	X	0	0	X	0	1	0	1
 
 Layout da instrução em hexadecimal:
 
