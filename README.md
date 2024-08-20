@@ -2,7 +2,70 @@
 
 - Vamos tentar usar ele para desenhar em uma matriz de led do logisim
 
+	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr	Inp2Reg	
+0-stall	0000	XX	X	0	0	X	0	0	0	X
+
+1-add	0001	00	0	0	0	0	0	1	0	0
+2-addi	0010	00	1	0	0	0	0	1	0	0
+3-sub	0011	01	0	0	0	0	0	1	0	0
+4-subi	0100	01	1	0	0	0	0	1	0	0
+5-mul	0101	10	0	0	0	0	0	1	0	0
+6-muli	0110	10	1	0	0	0	0	1	0	0
+7-div	0111	11	0	0	0	0	0	1	0	0
+8-divi	1000	11	1	0	0	0	0	1	0	0
+
+9-j	1001	XX	X	1	0	X	0	0	0	X
+10-beq	1010	XX	0	0	1	X	0	0	0	X
+
+11-lw	1011	00	1	0	0	1	0	1	0	0
+12-sw	1100	00	1	0	0	0	1	0	0	X
+
+13-tos	1101	XX	X	0	0	X	0	0	1	X
+14-inpt	1110	XX	X	0	0	X	0	1	0	1
+
+Layout da instrução em hexadecimal:
+
+	1   |	2   |	3   |	4   |	0	0	0	5  |
+	↑	↑	↑	↑   \______________________________/
+Nº da instrução	|	|	|		↑
+		|	|	|	Valor imediato
+	Registrador RD	|	|	(também usado no jump e branch)
+			|	|	
+		Registrador RS	|
+				|
+			Registrador RT
+
+**Se a instrução não usa registradores ou imediato, deixar sempre em 0**
+
+
+Exemplo de instrução em hexa:
+	•add $1, $2, $3 = 13120000
+	•addi $1, $1, 5 = 21100005
+	•beq $1, $2, 5  = a0120005
+	(vai pular 5 linhas abaixo da próxima linha)
+	Ex:	...
+		a0120005
+		|0↓
+		|1↓
+		|2↓
+		|3↓
+		|4↓
+		|5← essa linha será executada
+		...
+
+	•beq $1, $2, -5 = a012fffb
+	(pulos negativos devem usar complemento de 2 transformados em hexa com 4 algarismos)
+	Ex:	...
+		|5← essa linha será executada
+		|4↑
+		|3↑
+		|2↑
+		a120fffb|1↑
+		|0↑
+		...
+  
 ![](./Total.png)
 ![](./UC.png)
 ![](./ULA.png)
 ![](./BancoRegistradores.png)
+
