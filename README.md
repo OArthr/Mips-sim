@@ -2,67 +2,52 @@
 
 - Vamos tentar usar ele para desenhar em uma matriz de led do logisim
 
-	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr	Inp2Reg	
-0-stall	0000	XX	X	0	0	X	0	0	0	X
+## Instruction Set Architecture
 
-1-add	0001	00	0	0	0	0	0	1	0	0
-2-addi	0010	00	1	0	0	0	0	1	0	0
-3-sub	0011	01	0	0	0	0	0	1	0	0
-4-subi	0100	01	1	0	0	0	0	1	0	0
-5-mul	0101	10	0	0	0	0	0	1	0	0
-6-muli	0110	10	1	0	0	0	0	1	0	0
-7-div	0111	11	0	0	0	0	0	1	0	0
-8-divi	1000	11	1	0	0	0	0	1	0	0
+### Instruction Format
+* **Hexadecimal representation:** 4-digit hexadecimal number.
+* **Fields:**
+  * **Bits 0-3:** Opcode
+  * **Bits 4-7:** Register RD
+  * **Bits 8-11:** Register RS
+  * **Bits 12-15:** Register RT or immediate value
 
-9-j	1001	XX	X	1	0	X	0	0	0	X
-10-beq	1010	XX	0	0	1	X	0	0	0	X
+### Instruction Encoding
+| Opcode (Hex) | Instruction | RD | RS | RT/Imm | Description |
+|---|---|---|---|---|---|
+| 0000 | stall | - | - | - | Stall the pipeline |
+| 0001 | add | RD | RS | RT | Add RS to RT, store in RD |
+| ... | ... | ... | ... | ... | ... |
+| 1110 | inpt | - | - | - | Input a value and store in register 1 |
 
-11-lw	1011	00	1	0	0	1	0	1	0	0
-12-sw	1100	00	1	0	0	0	1	0	0	X
+### Examples
+* **add $1, $2, $3:** 13120000
+* **addi $1, $1, 5:** 21100005
+* **beq $1, $2, 5:** a0120005 (Branch to 5 instructions below)
+* **beq $1, $2, -5:** a012fffb (Branch to 5 instructions above)
 
-13-tos	1101	XX	X	0	0	X	0	0	1	X
-14-inpt	1110	XX	X	0	0	X	0	1	0	1
+### Notes
+* **Opcode:** Determines the operation to be performed.
+* **Registers:** RD, RS, and RT refer to general-purpose registers.
+* **Immediate:** A constant value used for arithmetic or addressing.
+* **Branch:** The `beq` instruction branches if the two registers are equal.
+* **Negative offsets:** Use two's complement representation for negative offsets.
 
-Layout da instrução em hexadecimal:
+### Additional Considerations
+* **Formatting:** Use a consistent formatting style for the table and code examples.
+* **Completeness:** Ensure that all instructions and their corresponding fields are included.
+* **Clarity:** Provide clear and concise explanations for each instruction and field.
+* **Examples:** Include a variety of examples to illustrate different usage scenarios.
+* **Visualization:** Consider using a diagram to visually represent the instruction format.
 
-	1   |	2   |	3   |	4   |	0	0	0	5  |
-	↑	↑	↑	↑   \______________________________/
-Nº da instrução	|	|	|		↑
-		|	|	|	Valor imediato
-	Registrador RD	|	|	(também usado no jump e branch)
-			|	|	
-		Registrador RS	|
-				|
-			Registrador RT
+## Creating the Markdown Table
+To create the Markdown table, you can use a Markdown table generator or manually create it using the following syntax:
 
-**Se a instrução não usa registradores ou imediato, deixar sempre em 0**
-
-
-Exemplo de instrução em hexa:
-	•add $1, $2, $3 = 13120000
-	•addi $1, $1, 5 = 21100005
-	•beq $1, $2, 5  = a0120005
-	(vai pular 5 linhas abaixo da próxima linha)
-	Ex:	...
-		a0120005
-		|0↓
-		|1↓
-		|2↓
-		|3↓
-		|4↓
-		|5← essa linha será executada
-		...
-
-	•beq $1, $2, -5 = a012fffb
-	(pulos negativos devem usar complemento de 2 transformados em hexa com 4 algarismos)
-	Ex:	...
-		|5← essa linha será executada
-		|4↑
-		|3↑
-		|2↑
-		a120fffb|1↑
-		|0↑
-		...
+```markdown
+| Column 1 Header | Column 2 Header | ... |
+|---|---|---|
+| Cell 1, Row 1 | Cell 2, Row 1 | ... |
+| Cell 1, Row 2 | Cell 2, Row 2 | ... |
   
 ![](./Total.png)
 ![](./UC.png)
