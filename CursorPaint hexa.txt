@@ -1,0 +1,72 @@
+v2.0 raw
+0
+21000001 	# r1 = limInferior
+22000001 	# r2/r3 = linha/coluna
+23000001
+24004000 	# r4 = limSuperior
+64408000
+64400004
+
+27000001	# variavel para permitir salvar ou apagar pontos
+2f000000	# ponteiro para memoria livre
+	
+	d0230000 	# print na tela
+		
+	28000000		# for loop para printar todos os pontos salvos
+		a08f0005
+			b9800000
+			ba800001
+			d09a0000
+			28800002
+		9000fffa
+		
+	e5000000 	# coloca valor de input em r5 e checa se é 0
+	a050fff6
+		a0340004		# movimentaçao do cursor
+			26000001
+			a0560001
+				90000001
+			63300002
+		
+		a0310004
+			26000002
+			a0560001
+				90000001
+			83300002
+		
+		a0240004
+			26000004
+			a0560001
+				90000001
+			62200002
+		
+		a0210004
+			26000008
+			a0560001
+				90000001
+			82200002
+		
+		
+		a070000b		# adicionando ou removendo pontos na memoria
+			26000010
+			a0560001
+				90000003
+			c0f20000
+			c0f30001
+			2ff00002
+			
+			a0f00004
+				26000020
+				a0560001
+					90000001
+				2ff0fffe
+		
+		26000010
+		a0560004
+		26000020
+		a0560002
+			27000001
+			90000001
+		27000000	
+		
+	9000ffce
