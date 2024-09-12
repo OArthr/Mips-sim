@@ -1,5 +1,5 @@
 	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr	Inp2Reg	
-0-stall	0000	XX	X	0	0	X	0	0	0	X
+0-stall	0000	XX	X	0	0	0	0	0	0	0
 
 1-add	0001	00	0	0	0	0	0	1	0	0
 2-addi	0010	00	1	0	0	0	0	1	0	0
@@ -10,14 +10,14 @@
 7-div	0111	11	0	0	0	0	0	1	0	0
 8-divi	1000	11	1	0	0	0	0	1	0	0
 
-9-j	1001	XX	X	1	0	X	0	0	0	X
-10-beq	1010	XX	0	0	1	X	0	0	0	X
+9-j	1001	XX	X	1	0	0	0	0	0	0
+10-beq	1010	XX	0	0	1	0	0	0	0	0
 
 11-lw	1011	00	1	0	0	1	0	1	0	0
-12-sw	1100	00	1	0	0	0	1	0	0	X
+12-sw	1100	00	1	0	0	0	1	0	0	0
 
-13-tos	1101	XX	X	0	0	X	0	0	1	X
-14-inpt	1110	XX	X	0	0	X	0	1	0	1
+13-tos	1101	XX	X	0	0	0	0	0	1	0
+14-inpt	1110	XX	X	0	0	0	0	1	0	1
 
 Layout da instrução em hexadecimal:
 
