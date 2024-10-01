@@ -1,0 +1,69 @@
+v2.0 raw
+0
+2f000003	# ponteiro para memoria livre
+c00f0000
+
+21000001 	# r1 = limInferior
+22000001 	# r2/r3 = linha/coluna
+23000001
+24004000 	# r4 = limSuperior
+64408000
+64400004
+
+27000001	# variavel para permitir salvar ou apagar pontos
+		
+	e5000000 	# coloca valor de input em r5 e checa se é 0
+	a050fffe
+		
+		26000001		# checagem de inputs
+		a056000a
+		26000002
+		a056000b
+		26000004
+		a056000c
+		26000008
+		a056000d
+		26000010
+		a056000e
+		26000020
+		a0560013
+		
+		a0340001		# movimentaçao
+			63300002
+		90000017
+		
+		a0310001
+			83300002
+		90000014
+		
+		a0240001
+			62200002
+		90000011
+		
+		a0210001
+			82200002
+		9000000e
+		
+		
+		a0700005		# adicionando ou removendo pontos na memoria
+			c0f20000
+			c0f30001
+			2ff00002
+			c00f0000
+			27000000
+		90000008
+		
+		a0700004
+		26000003		# nao deixa o r15 ficar menor que 3
+		a0f60005
+			2ff0fffe
+			c00f0000
+			27000000
+		90000001
+		
+		27000001	
+		
+		c0020001 	# colocando coordenada do cursor na memoria
+		c0030002
+		
+	9000ffd4

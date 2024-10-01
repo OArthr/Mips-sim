@@ -1,0 +1,17 @@
+v2.0 raw
+0
+0
+	bf000000
+	21000001
+	a01f0008
+		b2100000	# printando os pontos
+		b3100001
+		d0230000
+		
+		b2000001	# printando o cursor
+		b3000002
+		d0230000
+		
+		21100002
+	9000fff7
+9000fff4
