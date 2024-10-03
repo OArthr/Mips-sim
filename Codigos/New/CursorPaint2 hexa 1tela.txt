@@ -1,6 +1,9 @@
 v2.0 raw
 0
-2f000003	# ponteiro para memoria livre
+bf000000
+a0f00001		# se r15 = 0, recebe 3; se != 0, não altera
+	90000002
+2f000003		# ponteiro para memoria livre
 c00f0000
 
 21000001 	# r1 = limInferior
@@ -13,7 +16,7 @@ c00f0000
 27000001	# variavel para permitir salvar ou apagar pontos
 		
 	e5000000 	# coloca valor de input em r5 e checa se é 0
-	a050fffe
+	a0500026
 		
 		26000001		# checagem de inputs
 		a056000a
