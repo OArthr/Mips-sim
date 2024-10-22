@@ -17,7 +17,7 @@ Este projeto é um processador MIPS-like implementado no Logisim, que opera sem 
 - Apagar pontos em ordem do mais recente ao mais antigo.
 - Repetição dos pontos salvos na tela, permitindo a criação de desenhos complexos ponto a ponto.
 # Estrutura do Projeto
-Veja também a [Tabela UC](TabelaUC.txt) para compreender melhor o funcionamento de instruções dentro do processador.
+Veja também a [Tabela UC](TabelaUC.txt) ver o funcionamento de instruções dentro do processador.
 ![main](Imagens/main.png)
 ## Circuitos Principais
 ### Processador MIPS-like
