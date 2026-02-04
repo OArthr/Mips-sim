@@ -1,4 +1,4 @@
-	abcd	ULA_Op	ULA_Src	Jump	Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr	Inp2Reg	
+abcd	ULA_Op	ULA_Src	Jump Branch	Mem2Reg	MemWrit	RegWrit	Reg2scr	Inp2Reg	
 0-stall	0000	XX	X	0	0	0	0	0	0	0
 
 1-add	0001	00	0	0	0	0	0	1	0	0
@@ -10,7 +10,7 @@
 7-div	0111	11	0	0	0	0	0	1	0	0
 8-divi	1000	11	1	0	0	0	0	1	0	0
 
-9-j	1001	XX	X	1	0	0	0	0	0	0
+9-j		1001	XX	X	1	0	0	0	0	0	0
 10-beq	1010	XX	0	0	1	0	0	0	0	0
 
 11-lw	1011	00	1	0	0	1	0	1	0	0
@@ -21,14 +21,14 @@
 
 Layout da instrução em hexadecimal:
 
-	1   |	2   |	3   |	4   |	0	0	0	5  |
-	↑	↑	↑	↑   \______________________________/
+			1   |	2   |	3   |	4   |	0	0	0	5  |
+			↑	↑	↑	↑   \______________________________/
 Nº da instrução	|	|	|		↑
-		|	|	|	Valor imediato
+				|	|	|	Valor imediato
 	Registrador RD	|	|	(também usado no jump e branch)
-			|	|	
+					|	|	
 		Registrador RS	|
-				|
+						|
 			Registrador RT
 
 **Se a instrução não usa registradores ou imediato, deixar sempre em 0**
@@ -59,3 +59,4 @@ Exemplo de instrução em hexa:
 		a120fffb|1↑
 		|0↑
 		...
+
